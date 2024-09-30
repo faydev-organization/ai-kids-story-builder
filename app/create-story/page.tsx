@@ -150,7 +150,7 @@ const page = () => {
   };
 
   return (
-    <div className="p-10 md:px-28 lg:px-40">
+    <div className="p-10 md:px-28 lg:px-40 bg-[#cad3ff]">
       <h2 className="font-extrabold text-[70px] text-primary text-center">
         CREATE YOUR STORY
       </h2>
@@ -179,7 +179,7 @@ const page = () => {
         >
           Generate Story
         </Button>
-        <span>1 Credit will user</span>
+        <span className="text-xl text-primary">1 Credit will user</span>
       </div>
       <CustomLoader isLoading={loading} />
     </div>
