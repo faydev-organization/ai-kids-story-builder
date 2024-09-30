@@ -13,32 +13,39 @@ import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@nextui-org/button";
 import { UserButton, useUser } from "@clerk/nextjs";
+import { useRouter } from "next/navigation";
 
 const Header = () => {
   const { user, isSignedIn } = useUser();
+  const router = useRouter();
 
   const MenuList = [
     { name: "Home", link: "/" },
     { name: "Create Story", link: "/create-story" },
     { name: "Explore Stories", link: "/explore" },
-    { name: "Contact Us", link: "/contact" },
+    // { name: "Contact Us", link: "/contact" },
   ];
 
   const [isMenuOpen, setMenuIsOpen] = useState(false);
 
   return (
-    <section>
+    <div>
       <Navbar maxWidth="full" onMenuOpenChange={setMenuIsOpen}>
         <NavbarContent justify="start">
           <NavbarMenuToggle
             aria-label={isMenuOpen ? "Close menu" : "Open menu"}
             className="md:hidden"
           />
-          <NavbarBrand>
+          <NavbarBrand className="gap-3">
             <Image src={"/logo.svg"} alt={"Logo"} width={40} height={40} />
-            <h2 className="font-bold text-2xl text-primary ml-3u">
-              Kids Story
-            </h2>
+            <div
+              className="flex flex-col cursor-pointer"
+              onClick={() => router.push("/")}
+            >
+              <h2 className="font-bold text-2xl text-primary ml-3u">
+                FAY.AI Kids Story
+              </h2>
+            </div>
           </NavbarBrand>
         </NavbarContent>
         <NavbarContent justify="center" className="hidden md:flex">
@@ -67,7 +74,7 @@ const Header = () => {
           ))}
         </NavbarMenu>
       </Navbar>
-    </section>
+    </div>
   );
 };
 

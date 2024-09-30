@@ -1,7 +1,15 @@
 import React from "react";
+import DashboardHeader from "./_components/DashboardHeader";
+import UserStoryList from "./_components/UserStoryList";
 
 const Dashboard = () => {
-  return <div>Dashboard</div>;
+  return (
+    <div className="p-10 md:px-20 lg:px40 min-h-screen">
+      <DashboardHeader />
+
+      <UserStoryList />
+    </div>
+  );
 };
 
 export default Dashboard;
