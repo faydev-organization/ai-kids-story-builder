@@ -42,8 +42,11 @@ const Header = () => {
               className="flex flex-col cursor-pointer"
               onClick={() => router.push("/")}
             >
-              <h2 className="font-bold text-2xl text-primary ml-3u">
+              <h2 className="font-bold text-2xl text-primary hidden md:block ml-3">
                 FAY.AI Kids Story
+              </h2>
+              <h2 className="font-bold text-2xl text-primary block md:hidden ml-3">
+                FAY.AI
               </h2>
             </div>
           </NavbarBrand>
