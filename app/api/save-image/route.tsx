@@ -27,15 +27,12 @@ export async function POST(req: NextRequest) {
 
     // Upload the image
     await uploadString(imageRef, base64Image, "data_url");
-    // console.log("File Uploaded");
 
     // Get download URL
     const downloaderUrl = await getDownloadURL(imageRef);
-    // console.log(downloaderUrl);
 
     return NextResponse.json({ imageUrl: downloaderUrl });
   } catch (error: any) {
-    // console.error("Error in save-image handler:", error);
     return NextResponse.json(
       { message: "Internal Server Error", error: error.message },
       { status: 500 }
@@ -43,13 +40,13 @@ export async function POST(req: NextRequest) {
   }
 }
 
-export const convertImage = async (imageUrl: string) => {
+// Helper function to convert image
+const convertImage = async (imageUrl: string) => {
   try {
     const response = await axios.get(imageUrl, { responseType: "arraybuffer" });
     const base64Image = Buffer.from(response.data).toString("base64");
     return base64Image;
   } catch (error) {
-    // console.error("Error converting image:", error);
-    throw new Error("Failed to convert image"); // Rethrow error to be caught in the main handler
+    throw new Error("Failed to convert image");
   }
 };
